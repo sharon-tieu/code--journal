@@ -15,10 +15,68 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="background-color-grey">
   <header>
+    <div class="row purple-header-color">
+      <div class="column-half text-align-c">
+        <h2 class="font-family-proza font-color-wh padding-5-10">Code Journal</h2>
+      </div>
+    </div>
   </header>
   <main>
+    <div class="container padding-bottom-50" data-view="entry-form">
+      <h1 class="font-family-proza">New Entry</h1>
+      <form class="data-form">
+        <div class="row">
+          <div class="column-half">
+            <img src="./images/placeholder-image-square.jpg" alt="placeholder-img" class="placeholder-img img-source">
+          </div>
+          <div class="column-half">
+            <label for="title" class="font-family-proza input-title-font-size-20">Title</label>
+            <div>
+              <input
+                required
+                type="text"
+                name="title"
+                class="data-input-box"
+                id="title">
+            </div>
+            <div class="margin-top-20">
+              <label
+                  for="photo-url"
+                  class="font-family-proza input-title-font-size-20">
+                Photo URL
+              </label>
+              <div>
+                <input
+                  required
+                  type="text"
+                  name="photo-url"
+                  class="data-input-box photo-url"
+                  id="photo-url">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full margin-top-10">
+            <label for="notes" class="font-family-proza input-title-font-size-20">Notes</label>
+            <div>
+              <textarea
+              required name="notes"
+              id="notes"
+              cols="30"
+              rows="10"
+              class="textbox">
+              </textarea>
+            </div>
+            <div class="align-right">
+              <button class="save-button">SAVE</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
