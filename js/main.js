@@ -9,20 +9,17 @@ $photoUrl.addEventListener('input', function (event) {
   }
 });
 
-var $entryForm = document.querySelector('.data-form');
-$entryForm.addEventListener('submit', function (event) {
+var $entryFormData = document.querySelector('.data-form');
+$entryFormData.addEventListener('submit', function (event) {
   event.preventDefault();
-  var $titleEntryValue = document.querySelector('#title').value;
-  var $photoUrlValue = document.querySelector('.photo-url').value;
-  var $notesEntryValue = document.querySelector('#notes').value;
   var entries = {
     id: data.nextEntryId,
-    $titleEntryValue,
-    $photoUrlValue,
-    $notesEntryValue
+    title: $entryFormData.elements.title.value,
+    photoUrl: $entryFormData.elements.photourl.value,
+    notes: $entryFormData.elements.notes.value
   };
   data.entries.unshift(entries);
   data.nextEntryId++;
-  $entryForm.reset();
+  $entryFormData.reset();
   $imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
 });
