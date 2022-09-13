@@ -86,6 +86,7 @@ $newButton.addEventListener('click', function (event) {
 
 function viewSwap(view) {
   if (data.view === 'view-entries') {
+    data.view = 'view-entries';
     $createEntryView.className = 'hidden';
     $entriesListView.className = 'view-entries-list';
   } else {
