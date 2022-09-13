@@ -18,13 +18,14 @@
 <body class="background-color-grey">
   <header>
     <div class="row purple-header-color">
-      <div class="column-half text-align-c">
+      <div class="column-half display-flex align-items-center padding-left-70">
         <h2 class="font-family-proza font-color-wh padding-5-10">Code Journal</h2>
+        <a href="#entries" class="font-family-proza font-color-wh font-size-16 navbar-entries padding-left-20">Entries</a>
       </div>
     </div>
   </header>
   <main>
-    <div class="container padding-bottom-50" data-view="entry-form">
+    <div data-view="entry-form" class="create-entry-view container padding-bottom-50">
       <h1 class="font-family-proza">New Entry</h1>
       <form class="data-form">
         <div class="row">
@@ -77,6 +78,27 @@
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="view-entries" class="view-entries-list hidden">
+      <div class="container padding-bottom-50">
+        <div class="row">
+          <div class="column-half">
+            <h1 class="font-family-proza">Entries</h1>
+          </div>
+          <div class="column-half align-items-center justify-content-flex-end">
+            <a class="new-button font-family-proza align-items-center justify-content-center">NEW</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <p class="no-entries-view font-family-proza text-color-grey text-align-c">
+              No entries have been recorded.
+            </p>
+          </div>
+        </div>
+        <ul class="view-entries-list">
+        </ul>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
