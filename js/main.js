@@ -6,6 +6,7 @@ var $createEntryView = document.querySelector('.create-entry-view');
 var $entriesListView = document.querySelector('.view-entries-list');
 var $newButton = document.querySelector('.new-button');
 var $noEntriesView = document.querySelector('.no-entries-view');
+var $ulViewEntriesList = document.querySelector('ul');
 
 $photoUrl.addEventListener('input', function (event) {
   if ($photoUrl.value === '') {
@@ -29,6 +30,7 @@ $entryFormData.addEventListener('submit', function (event) {
   $imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   $createEntryView.className = 'hidden';
   $entriesListView.className = 'view-entries-list';
+  $ulViewEntriesList.prepend(renderEntries(data.entries[0]));
 });
 
 function renderEntries(entries) {
@@ -62,16 +64,16 @@ function renderEntries(entries) {
   return $parentLi;
 }
 
-var $ulViewEntriesList = document.querySelector('ul');
 window.addEventListener('DOMContentLoaded', function (event) {
   if (data.entries.length > 0) {
     $noEntriesView.className = 'hidden';
-  }
-  for (var i = 0; i < data.entries.length; i++) {
-    var accessEntry = renderEntries(data.entries[i]);
-    $ulViewEntriesList.append(accessEntry);
+    for (var i = 0; i < data.entries.length; i++) {
+      var accessEntry = renderEntries(data.entries[i]);
+      $ulViewEntriesList.append(accessEntry);
+    }
   }
   viewSwap();
+  data.view = 'view-entries';
 });
 
 $navBarEntries.addEventListener('click', function (event) {
