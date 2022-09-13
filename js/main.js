@@ -27,6 +27,8 @@ $entryFormData.addEventListener('submit', function (event) {
   data.nextEntryId++;
   $entryFormData.reset();
   $imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
+  $createEntryView.className = 'hidden';
+  $entriesListView.className = 'view-entries-list';
 });
 
 function renderEntries(entries) {
@@ -69,25 +71,26 @@ window.addEventListener('DOMContentLoaded', function (event) {
     var accessEntry = renderEntries(data.entries[i]);
     $ulViewEntriesList.append(accessEntry);
   }
+  viewSwap();
 });
 
 $navBarEntries.addEventListener('click', function (event) {
-  if (data.view === 'entry-form') {
-    $createEntryView.className = 'hidden';
-    $entriesListView.className = 'view-entries-list';
-  } else if (data.entries.length === 0) {
-    $createEntryView.className = 'create-entry-view container padding-bottom-50';
-    $entriesListView.className = 'hidden';
-    $noEntriesView.className = 'no-entries-view font-family-proza text-color-grey text-align-c';
-  }
+  data.view = 'view-entries';
+  viewSwap();
 });
 
 $newButton.addEventListener('click', function (event) {
-  if (data.view !== 'view-entries') {
-    $createEntryView.className = 'create-entry-view container padding-bottom-50';
-    $entriesListView.className = 'hidden';
-  } else {
+  data.view = 'entry-form';
+  viewSwap();
+});
+
+function viewSwap(view) {
+  if (data.view === 'view-entries') {
     $createEntryView.className = 'hidden';
     $entriesListView.className = 'view-entries-list';
+  } else {
+    data.view = 'entry-form';
+    $createEntryView.className = 'create-entry-view container padding-bottom-50';
+    $entriesListView.className = 'hidden';
   }
-});
+}
