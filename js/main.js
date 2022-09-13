@@ -31,6 +31,8 @@ $entryFormData.addEventListener('submit', function (event) {
   $createEntryView.className = 'hidden';
   $entriesListView.className = 'view-entries-list';
   $ulViewEntriesList.prepend(renderEntries(data.entries[0]));
+  data.view = 'view-entries';
+  viewSwap();
 });
 
 function renderEntries(entries) {
@@ -73,7 +75,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
     }
   }
   viewSwap();
-  data.view = 'view-entries';
 });
 
 $navBarEntries.addEventListener('click', function (event) {
