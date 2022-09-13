@@ -18,13 +18,14 @@
 <body class="background-color-grey">
   <header>
     <div class="row purple-header-color">
-      <div class="column-half text-align-c">
+      <div class="column-half display-flex align-items-center padding-left-70">
         <h2 class="font-family-proza font-color-wh padding-5-10">Code Journal</h2>
+        <a href="#entries" class="font-family-proza font-color-wh font-size-16 navbar-entries padding-left-20">Entries</a>
       </div>
     </div>
   </header>
   <main>
-    <div class="container padding-bottom-50" data-view="entry-form">
+    <div data-view="entry-form" class="create-entry-view container padding-bottom-50">
       <h1 class="font-family-proza">New Entry</h1>
       <form class="data-form">
         <div class="row">
@@ -77,6 +78,39 @@
           </div>
         </div>
       </form>
+    </div>
+    <div data-view="view-entries" class="view-entries-list hidden">
+      <div class="container padding-bottom-50">
+        <div class="row">
+          <div class="column-half">
+            <h1 class="font-family-proza">Entries</h1>
+          </div>
+          <div class="column-half align-items-center justify-content-flex-end">
+            <button class="new-button">NEW</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="column-full">
+            <p class="no-entries-view font-family-proza text-color-grey text-align-c">
+              No entries have been recorded.
+            </p>
+          </div>
+        </div>
+        <ul class="view-entries-list">
+          <!-- <li class="row margin-top-10">
+            <div class="column-half blue-line">
+              <img src="https://fictionhorizon.com/wp-content/uploads/2021/12/Toilet-Bound-Hanako-kun.jpg" class="view-img">
+            </div>
+            <div class="column-half blue-line padding-left-20">
+              <h2 class="font-family-proza view-text-heading-dark-grey">Title</h2>
+              <p class="font-family-proza text-color-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+              aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+              occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </li> -->
+        </ul>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
