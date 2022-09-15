@@ -151,3 +151,20 @@
 .view-text-heading-dark-grey {
   color: #292929;
 }
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.justify-content-sb {
+  justify-content: space-between;
+}
+
+.fa-pencil {
+  height: 50px;
+  color: #552b80;
+}
