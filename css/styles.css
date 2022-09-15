@@ -168,3 +168,20 @@
   height: 50px;
   color: #552b80;
 }
+
+.delete-entry {
+  color: #dc2928;
+  text-decoration: underline;
+}
+
+.padding-top-15 {
+  padding-top: 15px;
+}
+
+.modal-container {
+  background-color: #292929;
+}
+
+.padding-bottom-15 {
+  padding-bottom: 15px;
+}

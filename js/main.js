@@ -9,6 +9,12 @@ var $noEntriesView = document.querySelector('.no-entries-view');
 var $ulViewEntriesList = document.querySelector('ul');
 var $newEntryHeading = document.querySelector('.new-entry-heading');
 var $editEntryHeading = document.querySelector('.edit-entry-heading');
+var $deleteEntry = document.querySelector('.delete-entry');
+
+// $deleteEntry.addEventListener('click', function (event) {
+//   console.log('delete is working');
+
+// });
 
 $photoUrl.addEventListener('input', function (event) {
   if ($photoUrl.value === '') {
@@ -157,6 +163,7 @@ $newButton.addEventListener('click', function (event) {
   $newEntryHeading.classList.remove('hidden');
   $imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   // console.log('data.view from new button click:', data.view);
+  $deleteEntry.classList.add('hidden');
   viewSwap();
 });
 
@@ -165,6 +172,7 @@ function viewSwap(view) {
     data.view = 'view-entries';
     $createEntryView.className = 'hidden';
     $entriesListView.className = 'view-entries-list';
+    $deleteEntry.className = 'delete-entry font-family-proza font-color-wh font-size-16';
     // $ulViewEntriesList = null;
     // for (var i = 0; i < data.entries.length; i++) {
     //   $ulViewEntriesList.prepend(renderEntries(data.entries[i]));
