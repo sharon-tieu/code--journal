@@ -13,7 +13,7 @@ var $deleteEntry = document.querySelector('.delete-entry');
 var $deleteEntryCancel = document.querySelector('.modal-cancel-button');
 var $deleteEntryConfirm = document.querySelector('.modal-confirm-button');
 var $modalContainer = document.querySelector('.modal-container');
-var $ulElement = document.querySelectorAll('ul');
+// var $ulElement = document.querySelectorAll('ul');
 
 $photoUrl.addEventListener('input', function (event) {
   if ($photoUrl.value === '') {
@@ -152,7 +152,6 @@ window.addEventListener('DOMContentLoaded', function (event) {
 });
 
 $navBarEntries.addEventListener('click', function (event) {
-  data.view = 'view-entries';
   viewSwap();
 });
 
@@ -223,11 +222,12 @@ $deleteEntryConfirm.addEventListener('click', function (event) {
       data.entries.splice(i, 1);
     }
   }
-  var $allLiElements = document.querySelectorAll('li');
-  for (var k = 0; k < $allLiElements.length; k++) {
-    if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
-      Number($ulElement.remove($allLiElements[i]));
-      Number($allLiElements[i].getAttribute('data-entry-id'));
-    }
-  }
+  // var $allLiElements = document.querySelectorAll('li');
+  // for (var k = 0; k < $allLiElements.length; k++) {
+  //   console.log($allLiElements);
+  //   console.log(Number($allLiElements[i].getAttribute('data-entry-id')));
+  //   if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
+  //     $allLiElements[i].remove();
+  //   }
+  // }
 });
