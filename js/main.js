@@ -13,6 +13,7 @@ var $deleteEntry = document.querySelector('.delete-entry');
 var $deleteEntryCancel = document.querySelector('.modal-cancel-button');
 var $deleteEntryConfirm = document.querySelector('.modal-confirm-button');
 var $modalContainer = document.querySelector('.modal-container');
+var $ulElement = document.querySelectorAll('ul');
 
 $photoUrl.addEventListener('input', function (event) {
   if ($photoUrl.value === '') {
@@ -191,25 +192,57 @@ $deleteEntryCancel.addEventListener('click', function (event) {
   $modalContainer.classList = 'modal-container hidden';
 });
 
+// $deleteEntryConfirm.addEventListener('click', function (event) {
+//   var objectId = data.editing.id;
+//   event.preventDefault();
+//   for (var i = 0; i < data.entries.length; i++) {
+//     if (data.entries[i].id === objectId) {
+//       if (i === 0) { // if i is 0 (the first entry), then splice at 1 to include everything else except the first one
+//         data.entries = data.entries.splice(1);
+//       } else if (i === data.entries.length - 1) { // if user selects the last entry (i.length - 1), then include index 0, all the way up, excluding the last index of the array
+//         data.entries = data.entries.splice(0, i - 2);
+//       } else {
+//         data.entries = data.entries.slice(0, i).concat(data.entries.slice(i + 1)); // if user decides to delete an entry from the middle of the array, concatenate what is in the left of what is selected out and with what is at the right that is selected out
+//       }
+//     }
+//   }
+//   $modalContainer.classList.add('hidden');
+//   data.view = 'view-entries';
+//   viewSwap();
+//   $ulViewEntriesList.innerHTML = '';
+//   for (i = 0; i < data.entries.length; i++) {
+//     $ulViewEntriesList.prepend(renderEntries(data.entries[i]));
+//   }
+// });
+
 $deleteEntryConfirm.addEventListener('click', function (event) {
-  var objectId = data.editing.id;
-  event.preventDefault();
+  $modalContainer.classList.add('hidden');
+  // debugger;
   for (var i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].id === objectId) {
-      if (i === 0) {
-        data.entries = data.entries.splice(1);
-      } else if (i === data.entries.length - 1) {
-        data.entries = data.entries.splice(0, i - 2);
-      } else {
-        data.entries = data.entries.slice(0, i).concat(data.entries.slice(i + 1));
-      }
+    if (data.entries[i].id === data.editing.id) {
+      data.entries.splice(i, 1);
+    }
+    // console.log('test 1');
+    // for (var k = 0; k < $liElement.length; k++) {
+    //   console.log('test 2');
+    //   if (data.entries[i].id === data.editing.id && data.entries[i].id === $liElement[k].getAttribute('data-entry-id')) {
+    //     $liElement[k].remove();
+    //     data.entries.splice(k, 1);
+    //     data.view = 'entry-form';
+    //     viewSwap();
+    //   }
+    // }
+  }
+  var $allLiElements = document.querySelectorAll('li');
+  for (var k = 0; k < $allLiElements.length; k++) {
+    if (data.editing.id === $allLiElements[i].getAttribute('data-entry-id')) {
+      $ulElement.remove($allLiElements[i]);
+      Number($allLiElements[i].getAttribute('data-entry-id'));
     }
   }
-  $modalContainer.classList.add('hidden');
-  data.view = 'view-entries';
-  viewSwap();
-  $ulViewEntriesList.innerHTML = '';
-  for (i = 0; i < data.entries.length; i++) {
-    $ulViewEntriesList.prepend(renderEntries(data.entries[i]));
-  }
+  // for (var k = 0; k < $ulElement.length; k++) {
+  //   if (data[i].id === ) {
+  //     $liElement.remove(data.entries[i]);
+  //   }
+  // }
 });
