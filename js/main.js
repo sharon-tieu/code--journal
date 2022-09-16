@@ -222,27 +222,12 @@ $deleteEntryConfirm.addEventListener('click', function (event) {
     if (data.entries[i].id === data.editing.id) {
       data.entries.splice(i, 1);
     }
-    // console.log('test 1');
-    // for (var k = 0; k < $liElement.length; k++) {
-    //   console.log('test 2');
-    //   if (data.entries[i].id === data.editing.id && data.entries[i].id === $liElement[k].getAttribute('data-entry-id')) {
-    //     $liElement[k].remove();
-    //     data.entries.splice(k, 1);
-    //     data.view = 'entry-form';
-    //     viewSwap();
-    //   }
-    // }
   }
   var $allLiElements = document.querySelectorAll('li');
   for (var k = 0; k < $allLiElements.length; k++) {
-    if (data.editing.id === $allLiElements[i].getAttribute('data-entry-id')) {
-      $ulElement.remove($allLiElements[i]);
+    if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
+      Number($ulElement.remove($allLiElements[i]));
       Number($allLiElements[i].getAttribute('data-entry-id'));
     }
   }
-  // for (var k = 0; k < $ulElement.length; k++) {
-  //   if (data[i].id === ) {
-  //     $liElement.remove(data.entries[i]);
-  //   }
-  // }
 });
