@@ -152,6 +152,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
 });
 
 $navBarEntries.addEventListener('click', function (event) {
+  data.view = 'view-entries';
   viewSwap();
 });
 
@@ -222,12 +223,24 @@ $deleteEntryConfirm.addEventListener('click', function (event) {
       data.entries.splice(i, 1);
     }
   }
-  // var $allLiElements = document.querySelectorAll('li');
-  // for (var k = 0; k < $allLiElements.length; k++) {
-  //   console.log($allLiElements);
-  //   console.log(Number($allLiElements[i].getAttribute('data-entry-id')));
-  //   if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
-  //     $allLiElements[i].remove();
-  //   }
-  // }
+  var $allLiElements = document.querySelectorAll('li');
+  // debugger;
+  for (var k = 0; k < $allLiElements.length; k++) {
+    // console.log($allLiElements);
+    // console.log(Number($allLiElements[i].getAttribute('data-entry-id')));
+    if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
+      $allLiElements[i].remove();
+    }
+  }
 });
+
+// var $taskList = document.querySelector('.task-list');
+// $taskList.addEventListener('click', function (event) {
+//   console.log('event.target:', event.target);
+//   console.log('event.target.tagName:', event.target.tagName);
+//   if (event.target.tagName === 'BUTTON') {
+//     var ancestorElement = event.target.closest('.task-list-item');
+//     console.log("event.target.closest('.task-list-item):", ancestorElement);
+//     ancestorElement.remove();
+//   }
+// });
