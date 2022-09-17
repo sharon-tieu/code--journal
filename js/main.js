@@ -9,6 +9,11 @@ var $noEntriesView = document.querySelector('.no-entries-view');
 var $ulViewEntriesList = document.querySelector('ul');
 var $newEntryHeading = document.querySelector('.new-entry-heading');
 var $editEntryHeading = document.querySelector('.edit-entry-heading');
+var $deleteEntry = document.querySelector('.delete-entry');
+var $deleteEntryCancel = document.querySelector('.modal-cancel-button');
+var $deleteEntryConfirm = document.querySelector('.modal-confirm-button');
+var $modalContainer = document.querySelector('.modal-container');
+// var $ulElement = document.querySelectorAll('ul');
 
 $photoUrl.addEventListener('input', function (event) {
   if ($photoUrl.value === '') {
@@ -110,6 +115,7 @@ function renderEntries(entries) {
     var $editPhotoUrl = document.querySelector('#photo-url');
     var $editNotes = document.querySelector('#notes');
     var entryId = Number(event.target.closest('li').getAttribute('data-entry-id'));
+    $deleteEntry.classList.remove('hidden');
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].id === entryId) {
         // console.log('data.entries[i]:', data.entries[i]);
@@ -156,6 +162,7 @@ $newButton.addEventListener('click', function (event) {
   $editEntryHeading.classList.add('hidden');
   $newEntryHeading.classList.remove('hidden');
   $imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
+  $deleteEntry.classList.add('hidden');
   // console.log('data.view from new button click:', data.view);
   viewSwap();
 });
@@ -175,3 +182,64 @@ function viewSwap(view) {
     $entriesListView.className = 'hidden';
   }
 }
+
+$deleteEntry.addEventListener('click', function (event) {
+  $modalContainer.classList.remove('hidden');
+});
+
+$deleteEntryCancel.addEventListener('click', function (event) {
+  event.preventDefault();
+  $modalContainer.classList = 'modal-container hidden';
+});
+
+// $deleteEntryConfirm.addEventListener('click', function (event) {
+//   var objectId = data.editing.id;
+//   event.preventDefault();
+//   for (var i = 0; i < data.entries.length; i++) {
+//     if (data.entries[i].id === objectId) {
+//       if (i === 0) { // if i is 0 (the first entry), then splice at 1 to include everything else except the first one
+//         data.entries = data.entries.splice(1);
+//       } else if (i === data.entries.length - 1) { // if user selects the last entry (i.length - 1), then include index 0, all the way up, excluding the last index of the array
+//         data.entries = data.entries.splice(0, i - 2);
+//       } else {
+//         data.entries = data.entries.slice(0, i).concat(data.entries.slice(i + 1)); // if user decides to delete an entry from the middle of the array, concatenate what is in the left of what is selected out and with what is at the right that is selected out
+//       }
+//     }
+//   }
+//   $modalContainer.classList.add('hidden');
+//   data.view = 'view-entries';
+//   viewSwap();
+//   $ulViewEntriesList.innerHTML = '';
+//   for (i = 0; i < data.entries.length; i++) {
+//     $ulViewEntriesList.prepend(renderEntries(data.entries[i]));
+//   }
+// });
+
+$deleteEntryConfirm.addEventListener('click', function (event) {
+  $modalContainer.classList.add('hidden');
+  // debugger;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].id === data.editing.id) {
+      data.entries.splice(i, 1);
+      var $allLiElements = document.querySelectorAll('li');
+      for (var k = 0; k < $allLiElements.length; k++) {
+        if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
+          $allLiElements[i].remove();
+          data.view = 'view-entries';
+        }
+      }
+    }
+  }
+  viewSwap();
+});
+
+// var $taskList = document.querySelector('.task-list');
+// $taskList.addEventListener('click', function (event) {
+//   console.log('event.target:', event.target);
+//   console.log('event.target.tagName:', event.target.tagName);
+//   if (event.target.tagName === 'BUTTON') {
+//     var ancestorElement = event.target.closest('.task-list-item');
+//     console.log("event.target.closest('.task-list-item):", ancestorElement);
+//     ancestorElement.remove();
+//   }
+// });
