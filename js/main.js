@@ -221,17 +221,16 @@ $deleteEntryConfirm.addEventListener('click', function (event) {
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].id === data.editing.id) {
       data.entries.splice(i, 1);
+      var $allLiElements = document.querySelectorAll('li');
+      for (var k = 0; k < $allLiElements.length; k++) {
+        if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
+          $allLiElements[i].remove();
+          data.view = 'view-entries';
+        }
+      }
     }
   }
-  var $allLiElements = document.querySelectorAll('li');
-  // debugger;
-  for (var k = 0; k < $allLiElements.length; k++) {
-    // console.log($allLiElements);
-    // console.log(Number($allLiElements[i].getAttribute('data-entry-id')));
-    if (data.editing.id === Number($allLiElements[i].getAttribute('data-entry-id'))) {
-      $allLiElements[i].remove();
-    }
-  }
+  viewSwap();
 });
 
 // var $taskList = document.querySelector('.task-list');
